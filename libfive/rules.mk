@@ -1,6 +1,6 @@
 PREFIX=riscv64-unknown-elf
 
-RV_ROOT ?= /opt/riscv
+RV_ROOT ?= $(RISCV)
 
 CC=$(PREFIX)-gcc
 AS=$(PREFIX)-as
@@ -9,13 +9,15 @@ OBJCOPY=$(PREFIX)-objcopy
 OBJDUMP=$(PREFIX)-objdump
 
 INCLUDE=-I$(LIBFIVE_ROOT)/..
-ARCH=rv32imac
+GCC_ARCH=rv32imac
+ARCH=$(GCC_ARCH)_zicsr
+
 
 O ?= s
 
 CFLAGS=-O$(O) $(INCLUDE) -g -Wall -Wno-unused-function -nostdlib -nostartfiles -ffreestanding -march=$(ARCH) -mabi=ilp32 -std=gnu99 -mcmodel=medany
 ASFLAGS=-march=$(ARCH) -mabi=ilp32
-LDFLAGS=-T $(LIBFIVE_ROOT)/memmap.ld -L$(RV_ROOT)/$(PREFIX)/lib/$(ARCH)/ilp32 -L$(RV_ROOT)/lib/gcc/$(PREFIX)/11.1.0/$(ARCH)/ilp32 -melf32lriscv
+LDFLAGS=-T $(LIBFIVE_ROOT)/memmap.ld -L$(RV_ROOT)/$(PREFIX)/lib/$(GCC_ARCH)/ilp32 -L$(RV_ROOT)/lib/gcc/$(PREFIX)/13.2.0/$(GCC_ARCH)/ilp32 -melf32lriscv
 LDLIBS=-lgcc
 
 LIBCSRC=$(wildcard $(LIBFIVE_ROOT)/*.c) $(wildcard $(LIBFIVE_ROOT)/libc/*.c)

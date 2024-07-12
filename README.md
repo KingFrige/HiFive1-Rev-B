@@ -8,3 +8,16 @@ Usage:
 * Make sure the GNU RISC-V toolchain is installed (prebuilt binaries [available](https://github.com/zyedidia/riscv-gnu-toolchain-prebuilt)).
 * Navigate to your program of choice (for example, `programs/blinkrgb`).
 * Plug in the board and run `make install`.
+
+
+## run
+
+```bash
+$ module load riscv-toolchain/gcc-master  # set RISCV
+
+$ export LIBFIVE_ROOT=$PWD/libfive
+
+$ cd programs/hello
+$ make
+```
+
