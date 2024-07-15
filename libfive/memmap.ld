@@ -4,7 +4,6 @@ OUTPUT_ARCH("riscv")
 ENTRY(_start)
 
 MEMORY {
-  flash(rx) : ORIGIN = 0x20010000, LENGTH = 0x400000
   ram(rwx) : ORIGIN = 0x80000000, LENGTH = 0x4000
 }
 
@@ -19,17 +18,17 @@ SECTIONS {
     *(.srodata*)
     . = ALIGN(4);
     __code_end__ = .;
-  } >flash
+  } >ram
 
   . = ALIGN(4);
   .rodata : {
     *(.rodata*)
     *(.srodata*)
     *(.eh*)
-  } >flash AT>flash
+  } >ram AT>ram
 
   . = ALIGN(4);
-  .data 0x80000000 : AT (ADDR(.rodata) + SIZEOF(.rodata) ) {
+  .data ADDR(.rodata) + SIZEOF(.rodata) : {
     __data_start_flash__ = LOADADDR(.data);
     __data_start__ = .;
     *(.data*)

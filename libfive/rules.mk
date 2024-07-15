@@ -9,7 +9,7 @@ OBJCOPY=$(PREFIX)-objcopy
 OBJDUMP=$(PREFIX)-objdump
 
 INCLUDE=-I$(LIBFIVE_ROOT)/..
-GCC_ARCH=rv32imac
+GCC_ARCH=rv32i
 ARCH=$(GCC_ARCH)_zicsr
 
 
@@ -27,7 +27,7 @@ LIBOBJ=$(LIBCSRC:.c=.o) $(LIBSSRC:.s=.o)
 SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
 
-all: $(PROG).hex
+all: $(PROG).hex $(PROG).list
 
 install: $(PROG).hex
 	@test -n "$(RISCV_MOUNT)" || (echo "Set the RISCV_MOUNT environment variable to the path at which your HiFive1 RevB board is mounted. This will probably be under /media or /Volumes." && false)
@@ -53,5 +53,6 @@ $(PROG).elf: $(OBJ) $(LIBOBJ)
 
 clean:
 	rm -f *.o *.elf *.hex *.bin *.list
+	rm -f $(LIBFIVE_ROOT)/*.o
 
 .PHONY: all install clean

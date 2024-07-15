@@ -37,7 +37,7 @@ typedef enum {
     SR_TIP = 1,
 } i2c_sr_t;
 
-static volatile i2c_reg_t* const i2c = (volatile i2c_reg_t*) 0x10016000;
+static volatile i2c_reg_t* const i2c = (volatile i2c_reg_t*) 0x10030000;
 static const uint32_t i2c_clock_freq = 32000000;
 
 void i2c_setup(uint32_t freq, int scl, int sda) {

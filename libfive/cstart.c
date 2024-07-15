@@ -22,7 +22,7 @@ void _cstart() {
         *bss++ = 0;
     }
 
-    cpu_clock_init();
+    // cpu_clock_init();
     uart_init(115200);
 
     main();

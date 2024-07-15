@@ -18,7 +18,7 @@ typedef enum {
     TXDATA_FULL = 31,
 } uart_txdata_t;
 
-static volatile uart_reg_t* const uart_0 = (uart_reg_t*) 0x10013000;
+static volatile uart_reg_t* const uart_0 = (uart_reg_t*) 0x10000000;
 
 void uart_init(unsigned baud) {
     uart_0->div = (CPU_FREQ + baud/2)/baud - 1;
