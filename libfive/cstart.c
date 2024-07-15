@@ -23,7 +23,7 @@ void _cstart() {
     }
 
     // cpu_clock_init();
-    uart_init(115200);
+    uart_init();
 
     main();
 }

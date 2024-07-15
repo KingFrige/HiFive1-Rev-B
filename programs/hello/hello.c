@@ -1,7 +1,10 @@
 #include "libfive/uart.h"
 
 int main() {
-    printf("Hello world!\n");
 
-    return 0;
+  print_s("Hello world!\n");
+
+  while(1){;}
+
+  return 0;
 }

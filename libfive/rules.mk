@@ -9,16 +9,15 @@ OBJCOPY=$(PREFIX)-objcopy
 OBJDUMP=$(PREFIX)-objdump
 
 INCLUDE=-I$(LIBFIVE_ROOT)/..
-GCC_ARCH=rv32i
-ARCH=$(GCC_ARCH)_zicsr
+ARCH=rv64g
 
 
 O ?= s
 
-CFLAGS=-O$(O) $(INCLUDE) -g -Wall -Wno-unused-function -nostdlib -nostartfiles -ffreestanding -march=$(ARCH) -mabi=ilp32 -std=gnu99 -mcmodel=medany
-ASFLAGS=-march=$(ARCH) -mabi=ilp32
-LDFLAGS=-T $(LIBFIVE_ROOT)/memmap.ld -L$(RV_ROOT)/$(PREFIX)/lib/$(GCC_ARCH)/ilp32 -L$(RV_ROOT)/lib/gcc/$(PREFIX)/13.2.0/$(GCC_ARCH)/ilp32 -melf32lriscv
-LDLIBS=-lgcc
+CFLAGS=-O$(O) $(INCLUDE) -g -Wall -Wno-unused-function -nostdlib -nostartfiles -ffreestanding -march=$(ARCH) -mabi=lp64 -std=gnu99 -mcmodel=medany
+ASFLAGS=-march=$(ARCH) -mabi=lp64
+LDFLAGS=-T $(LIBFIVE_ROOT)/memmap.ld -melf64lriscv
+LDLIBS=
 
 LIBCSRC=$(wildcard $(LIBFIVE_ROOT)/*.c) $(wildcard $(LIBFIVE_ROOT)/libc/*.c)
 LIBSSRC=$(wildcard $(LIBFIVE_ROOT)/*.s)
