@@ -1,4 +1,5 @@
 #include "libfive/uart.h"
+#include "libfive/printf.h"
 #include "libfive/exception.h"
 #include "libfive/gpio.h"
 #include "libfive/riscv_csr.h"

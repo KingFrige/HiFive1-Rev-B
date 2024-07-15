@@ -1,18 +1,25 @@
-# HiFive 1 Rev B Library and Examples
+# gem5 HiFive platform Examples
 
-Some examples of bare metal programs for the HiFive 1 Rev B board.
+## usage
 
-Usage:
+### dir structure
 
-* Set the `LIBFIVE_ROOT` environment variable to point to the `libfive` directory.
-* Make sure the GNU RISC-V toolchain is installed (prebuilt binaries [available](https://github.com/zyedidia/riscv-gnu-toolchain-prebuilt)).
-* Navigate to your program of choice (for example, `programs/blinkrgb`).
-* Plug in the board and run `make install`.
+```bahs
+├── gem5
+│   └── build
+│       └── gem5.opt
+└── gem5-HiFive-bare-metal
+    └── programs/hello
+        └── hello.elf
+```
 
+### build testcase
 
-## run
+NOTE: set RISCV to riscvtoolchain
 
 ```bash
+$ cd gem5-HiFive-bare-metal
+
 $ module load riscv-toolchain/gcc-master  # set RISCV
 
 $ export LIBFIVE_ROOT=$PWD/libfive
@@ -21,3 +28,26 @@ $ cd programs/hello
 $ make
 ```
 
+### gem5
+
+```bash
+$ cd gem5
+$ scons -sQ -j$(nproc) build/RISCV/gem5.debug
+
+$ ./build/RISCV/gem5.debug ./configs/example/riscv/fs_linux.py --bare-metal --kernel=../gem5-HiFive-bare-metal/programs/hello/hello.elf
+
+# new ternimal/shell
+$ cd util/term
+
+$ make
+
+$ ./m5term localhost 3456
+```
+
+![](gem5-run.png)
+
+
+## reference
+
+1. [HiFive 1 Rev B Library and Examples](https://github.com/zyedidia/hifive)
+1. [printf](https://github.com/mpaland/printf)

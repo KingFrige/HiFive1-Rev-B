@@ -1,6 +1,7 @@
 #include <stdint.h>
 
-#include "libfive/libfive.h"
+#include "libfive/uart.h"
+#include "libfive/printf.h"
 
 enum { conversion_reg = 0, config_reg = 1 };
 

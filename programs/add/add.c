@@ -1,3 +1,6 @@
+#include "libfive/uart.h"
+#include "libfive/printf.h"
+
 int main() {
 
   int a = 3000;
@@ -5,7 +8,8 @@ int main() {
 
   int c = a + b;
 
-  while(1){;}
+  printf("a + b = %d\n", c);
 
+  while(1){;}
   return 0;
 }

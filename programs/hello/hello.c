@@ -1,8 +1,9 @@
 #include "libfive/uart.h"
+#include "libfive/printf.h"
 
 int main() {
 
-  print_s("Hello world!\n");
+  printf("Hello world!\n");
 
   while(1){;}
 

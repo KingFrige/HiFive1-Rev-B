@@ -3,6 +3,7 @@
 #include "libfive/timer.h"
 #include "libfive/riscv_csr.h"
 #include "libfive/bits.h"
+#include "libfive/printf.h"
 
 #include <string.h>
 
