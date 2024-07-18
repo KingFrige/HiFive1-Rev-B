@@ -53,5 +53,6 @@ $(PROG).elf: $(OBJ) $(LIBOBJ)
 clean:
 	rm -f *.o *.elf *.hex *.bin *.list
 	rm -f $(LIBFIVE_ROOT)/*.o
+	rm -f $(LIBFIVE_ROOT)/libc/*.o
 
 .PHONY: all install clean
