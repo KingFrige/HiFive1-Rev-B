@@ -7,7 +7,7 @@
 ```bahs
 ├── gem5
 │   └── build
-│       └── gem5.opt
+│       └── gem5.debug
 └── gem5-HiFive-bare-metal
     └── programs/hello
         └── hello.elf
