@@ -9,7 +9,7 @@ OBJCOPY=$(PREFIX)-objcopy
 OBJDUMP=$(PREFIX)-objdump
 
 INCLUDE=-I$(LIBFIVE_ROOT)/..
-ARCH=rv64g
+ARCH=rv64gv
 
 
 O ?= s

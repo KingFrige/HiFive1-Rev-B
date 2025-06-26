@@ -51,3 +51,4 @@ $ ./m5term localhost 3456
 
 1. [HiFive 1 Rev B Library and Examples](https://github.com/zyedidia/hifive)
 1. [printf](https://github.com/mpaland/printf)
+1. [使用 GCC 13 编译包含 RVV Intrinsic 的程序](https://learning.eulixos.com/posts/2024-01/horizonchaser__rvv_on_gcc_13)
